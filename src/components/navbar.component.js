@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -13,26 +13,30 @@ function NavbarComponent() {
       <nav className="navbar navbar-light bg-light navbar-expand-lg">
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
           <Link to="/" className="navbar-brand">
-            <b style={{ color: "darkgreen" }}>Hotel Manoj</b>
+            <b
+              style={{ color: "darkblue", fontFamily: "fantasy", fontSize: 25 }}
+            >
+              Hotel Pennsylvania
+            </b>
           </Link>
           <li className="navbar-item">
             <Link to="/about-us" className="nav-link">
-              About
+              <p style={{ color: "darkblue" }}>About</p>
             </Link>
           </li>
           <li className="navbar-item">
-            <Link to="/services" className="nav-link">
-              Our Services
+            <Link to="/gallery" className="nav-link">
+              <p style={{ color: "darkblue" }}>Gallery</p>
             </Link>
           </li>
           <li className="navbar-item">
             <Link to="" className="nav-link">
-              Book
+              <p style={{ color: "darkblue" }}>Book </p>
             </Link>
           </li>
           <li className="navbar-item" style={{ color: "black" }}>
             <Link to="/contact" className="nav-link">
-              Call
+              <p style={{ color: "darkblue" }}>Call </p>
             </Link>
           </li>
         </ul>
@@ -49,7 +53,7 @@ function NavbarComponent() {
           </a>
           &nbsp;&nbsp;&nbsp;&nbsp;
           <a
-            href="https://www.instagram.com/"
+            href="https://www.instagram.com/manoj__221b/"
             className="instalink"
             target="_blank"
           >
