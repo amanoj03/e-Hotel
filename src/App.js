@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import AboutUs from "./components/aboutus.component";
 import Gallery from "./components/gallery.component";
 import ContactComponent from "./components/contact.component";
+import BookComponent from "./components/book.component";
 function App() {
   return (
     <Router>
@@ -13,6 +14,7 @@ function App() {
       <Route path="/about-us" exact component={AboutUs} />
       <Route path="/gallery" exact component={Gallery} />
       <Route path="/contact" exact component={ContactComponent} />
+      <Route path="/book" exact component={BookComponent} />
     </Router>
   );
 }

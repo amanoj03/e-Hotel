@@ -30,7 +30,7 @@ function NavbarComponent() {
             </Link>
           </li>
           <li className="navbar-item">
-            <Link to="" className="nav-link">
+            <Link to="/book" className="nav-link">
               <p style={{ color: "darkblue" }}>Book </p>
             </Link>
           </li>
