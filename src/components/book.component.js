@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-export default class CreateExercise extends Component {
+
+export default class BookComponent extends Component {
   constructor(props) {
     super(props);
+
     this.onChangeName = this.onChangeName.bind(this);
     this.onChangeAddress = this.onChangeAddress.bind(this);
     this.onChangeCity = this.onChangeCity.bind(this);
@@ -23,52 +25,111 @@ export default class CreateExercise extends Component {
       email: "",
       datefrom: new Date(),
       dateto: new Date(),
-      users: [],
     };
   }
-  componentDidMount() {}
+  componentDidMount() {
+    console.log("here");
+    axios
+      .get("http://localhost:5000/customers/")
+      .then((response) => console.log(response));
+  }
   onChangeName(e) {
+    console.log(e.target.value);
     this.setState({
       customername: e.target.value,
     });
   }
   onChangeAddress(e) {
+    console.log(e.target.value);
     this.setState({
       address: e.target.value,
     });
   }
   onChangeCity(e) {
+    console.log(e.target.value);
     this.setState({
       city: e.target.value,
     });
   }
   onChangeCountry(e) {
+    console.log(e.target.value);
     this.setState({
       country: e.target.value,
     });
   }
   onChangePhoneNumber(e) {
+    console.log(e.target.value);
     this.setState({
       phonenumber: e.target.value,
     });
   }
   onChangeEmail(e) {
+    console.log(e.target.value);
     this.setState({
       email: e.target.value,
     });
   }
   onChangeDateFrom(date) {
+    console.log(date);
     this.setState({
       datefrom: date,
     });
   }
   onChangeDateTo(date) {
+    console.log(date);
     this.setState({
       dateto: date,
     });
   }
   onSubmit(e) {
     e.preventDefault();
+
+    console.log("here");
+
+    const cusomter = {
+      customername: this.state.customername,
+      address: this.state.address,
+      city: this.state.city,
+      country: this.state.country,
+      phonenumber: this.state.phonenumber,
+      email: this.state.email,
+      datefrom: this.state.datefrom,
+      dateto: this.state.dateto,
+    };
+    console.log(cusomter);
+
+    // axios({
+    //   method: "post",
+    //   url: "http://localhost:5000/customers/add",
+    //   data: cusomter,
+    // })
+    //   .then((res) => {
+    //     if (res.status == 200) console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     if (err.request) {
+    //       console.log(err.request);
+    //     }
+    //     if (err.response) {
+    //       console.log(err.response);
+    //     }
+    //   });
+    axios
+      .post("http://localhost:5000/customers/add", cusomter)
+      .then((res) => console.log(res.data))
+      .catch((err) => {
+        if (err.request) {
+          console.log(err.request);
+        }
+        if (err.response) {
+          console.log(err.response);
+        }
+        if (err.message) {
+          console.log(err.message);
+        }
+      });
+
+    window.location = "/";
   }
   render() {
     return (
@@ -77,17 +138,18 @@ export default class CreateExercise extends Component {
           style={{
             textAlign: "center",
             fontFamily: "monospace",
+            fontWeight: "normal",
             color: "orange",
           }}
         >
-          Book Component
+          Book Your Comfort
         </h1>
         <div
           style={{
             margin: "30px 30px 0px 30px",
           }}
         >
-          <form>
+          <form onSubmit={this.onSubmit}>
             <div className="form-group">
               <label>Your Name: </label>
               <input
@@ -146,7 +208,7 @@ export default class CreateExercise extends Component {
             <div className="form-group">
               <label>Email: </label>
               <input
-                type="text"
+                type="email"
                 required
                 className="form-control"
                 style={{ width: "300px" }}
@@ -158,6 +220,7 @@ export default class CreateExercise extends Component {
               <label>Date From: </label>
               <div>
                 <DatePicker
+                  required
                   selected={this.state.datefrom}
                   onChange={this.onChangeDateFrom}
                 />
@@ -167,6 +230,7 @@ export default class CreateExercise extends Component {
               <label>Date To: </label>
               <div>
                 <DatePicker
+                  required
                   selected={this.state.dateto}
                   onChange={this.onChangeDateTo}
                 />
@@ -174,9 +238,14 @@ export default class CreateExercise extends Component {
             </div>
             <br />
             <div className="form-group">
-              <input type="submit" value="Book" className="btn btn-warning" />
-              <br />
+              <input
+                type="submit"
+                value="Book"
+                style={{ width: "150px" }}
+                className="btn btn-warning"
+              />
             </div>
+            <br />
           </form>
         </div>
       </div>

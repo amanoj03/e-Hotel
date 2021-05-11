@@ -34,11 +34,11 @@ function NavbarComponent() {
               <p style={{ color: "darkblue" }}>Book </p>
             </Link>
           </li>
-          <li className="navbar-item" style={{ color: "black" }}>
+          {/* <li className="navbar-item" style={{ color: "black" }}>
             <Link to="/contact" className="nav-link">
-              <p style={{ color: "darkblue" }}>Call </p>
+              <p style={{ color: "darkblue" }}>Feedback </p>
             </Link>
-          </li>
+          </li> */}
         </ul>
         <div className="social-part">
           {/* <i class="fa fa-facebook" aria-hidden="true"></i>
@@ -61,7 +61,7 @@ function NavbarComponent() {
           </a>
           &nbsp;&nbsp;&nbsp;&nbsp;
           <a
-            href="https://twitter.com/"
+            href="https://twitter.com/manoj_mi5"
             className="twitterlink"
             target="_blank"
           >

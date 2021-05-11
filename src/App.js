@@ -6,6 +6,9 @@ import AboutUs from "./components/aboutus.component";
 import Gallery from "./components/gallery.component";
 import ContactComponent from "./components/contact.component";
 import BookComponent from "./components/book.component";
+import AdminLoginComponent from "./components/admin.login.component";
+import AdminDashboardComponent from "./components/admin.dashboard.component";
+import ErrorComponent from "./components/error.component";
 function App() {
   return (
     <Router>
@@ -15,6 +18,13 @@ function App() {
       <Route path="/gallery" exact component={Gallery} />
       <Route path="/contact" exact component={ContactComponent} />
       <Route path="/book" exact component={BookComponent} />
+      <Route path="/admin-login" exact component={AdminLoginComponent} />
+      <Route
+        path="/admin-dashboard"
+        exact
+        component={AdminDashboardComponent}
+      />
+      <Route path="/error" exact component={ErrorComponent} />
     </Router>
   );
 }

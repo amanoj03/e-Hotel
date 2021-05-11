@@ -3,7 +3,9 @@ import React from "react";
 function ContactComponent() {
   return (
     <div style={{ marginTop: "70px" }}>
-      <h1>Contact</h1>
+      <h3>
+        <a href="mailto:yourmail@gmail.com">Mail us</a>
+      </h3>
     </div>
   );
 }
