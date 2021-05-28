@@ -34,11 +34,11 @@ function NavbarComponent() {
               <p style={{ color: "darkblue" }}>Book </p>
             </Link>
           </li>
-          {/* <li className="navbar-item" style={{ color: "black" }}>
-            <Link to="/contact" className="nav-link">
+          <li className="navbar-item" style={{ color: "black" }}>
+            <Link to="/feedback" className="nav-link">
               <p style={{ color: "darkblue" }}>Feedback </p>
             </Link>
-          </li> */}
+          </li>
         </ul>
         <div className="social-part">
           {/* <i class="fa fa-facebook" aria-hidden="true"></i>

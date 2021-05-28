@@ -4,7 +4,7 @@ import NavbarComponent from "./components/navbar.component";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import AboutUs from "./components/aboutus.component";
 import Gallery from "./components/gallery.component";
-import ContactComponent from "./components/contact.component";
+import FeedBackComponent from "./components/feedback.component";
 import BookComponent from "./components/book.component";
 import AdminLoginComponent from "./components/admin.login.component";
 import AdminDashboardComponent from "./components/admin.dashboard.component";
@@ -16,7 +16,7 @@ function App() {
       <Route path="/" exact component={HomePage} />
       <Route path="/about-us" exact component={AboutUs} />
       <Route path="/gallery" exact component={Gallery} />
-      <Route path="/contact" exact component={ContactComponent} />
+      <Route path="/feedback" exact component={FeedBackComponent} />
       <Route path="/book" exact component={BookComponent} />
       <Route path="/admin-login" exact component={AdminLoginComponent} />
       <Route
