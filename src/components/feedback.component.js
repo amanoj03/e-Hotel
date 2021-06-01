@@ -1,101 +1,64 @@
 import React, { Component } from "react";
 import axios from "axios";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+
 export default class ContactComponent extends Component {
   constructor(props) {
     super(props);
 
     this.onChangeName = this.onChangeName.bind(this);
-    this.onChangeAddress = this.onChangeAddress.bind(this);
-    this.onChangeCity = this.onChangeCity.bind(this);
-    this.onChangeCountry = this.onChangeCountry.bind(this);
-    this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
-    this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangeDateFrom = this.onChangeDateFrom.bind(this);
-    this.onChangeDateTo = this.onChangeDateTo.bind(this);
+    this.onChangeAge = this.onChangeAge.bind(this);
+    this.onChangeSummary = this.onChangeSummary.bind(this);
+    this.onChangeDescription = this.onChangeDescription.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
-      customername: "",
-      address: "",
-      city: "",
-      country: "",
-      phonenumber: "",
-      email: "",
-      datefrom: new Date(),
-      dateto: new Date(),
+      name: "",
+      age: "",
+      summary: "",
+      description: "",
     };
   }
   componentDidMount() {
-    console.log("here");
+    console.log("mount here");
     axios
-      .get("http://localhost:5000/customers/")
+      .get("http://localhost:5000/feedback/")
       .then((response) => console.log(response));
   }
   onChangeName(e) {
     console.log(e.target.value);
     this.setState({
-      customername: e.target.value,
+      name: e.target.value,
     });
   }
-  onChangeAddress(e) {
+  onChangeAge(e) {
     console.log(e.target.value);
     this.setState({
-      address: e.target.value,
+      age: e.target.value,
     });
   }
-  onChangeCity(e) {
+  onChangeSummary(e) {
     console.log(e.target.value);
     this.setState({
-      city: e.target.value,
+      summary: e.target.value,
     });
   }
-  onChangeCountry(e) {
+  onChangeDescription(e) {
     console.log(e.target.value);
     this.setState({
-      country: e.target.value,
-    });
-  }
-  onChangePhoneNumber(e) {
-    console.log(e.target.value);
-    this.setState({
-      phonenumber: e.target.value,
-    });
-  }
-  onChangeEmail(e) {
-    console.log(e.target.value);
-    this.setState({
-      email: e.target.value,
-    });
-  }
-  onChangeDateFrom(date) {
-    console.log(date);
-    this.setState({
-      datefrom: date,
-    });
-  }
-  onChangeDateTo(date) {
-    console.log(date);
-    this.setState({
-      dateto: date,
+      description: e.target.value,
     });
   }
   onSubmit(e) {
     e.preventDefault();
 
-    console.log("here");
+    console.log("here submit");
 
-    const cusomter = {
-      customername: this.state.customername,
-      address: this.state.address,
-      city: this.state.city,
-      country: this.state.country,
-      phonenumber: this.state.phonenumber,
-      email: this.state.email,
-      datefrom: this.state.datefrom,
-      dateto: this.state.dateto,
+    const feedback = {
+      name: this.state.name,
+      age: this.state.age,
+      summary: this.state.summary,
+      description: this.state.description,
     };
-    console.log(cusomter);
+    console.log(feedback);
 
     // axios({
     //   method: "post",
@@ -114,7 +77,7 @@ export default class ContactComponent extends Component {
     //     }
     //   });
     axios
-      .post("http://localhost:5000/customers/add", cusomter)
+      .post("http://localhost:5000/feedback/add", feedback)
       .then((res) => console.log(res.data))
       .catch((err) => {
         if (err.request) {
@@ -153,57 +116,37 @@ export default class ContactComponent extends Component {
               <label>Your Name: </label>
               <input
                 type="text"
+                placeholder="Your Sweet Name"
                 required
                 className="form-control"
                 style={{ width: "300px" }}
-                value={this.state.customername}
+                value={this.state.name}
                 onChange={this.onChangeName}
-              />
-            </div>
-            <div className="form-group">
-              <label>Gender: </label>
-              <input
-                type="text"
-                required
-                className="form-control"
-                style={{ width: "300px" }}
-                value={this.state.address}
-                onChange={this.onChangeAddress}
-              />
-            </div>
-            <div className="form-group">
-              <label>Age: </label>
-              <input
-                type="text"
-                required
-                className="form-control"
-                style={{ width: "300px" }}
-                value={this.state.city}
-                onChange={this.onChangeCity}
               />
             </div>
 
             <div className="form-group">
-              <label>Phone Number: </label>
+              <label>Age: </label>
               <input
                 type="text"
-                required
+                placeholder="Optional"
                 className="form-control"
                 style={{ width: "300px" }}
-                value={this.state.phonenumber}
-                onChange={this.onChangePhoneNumber}
+                value={this.state.age}
+                onChange={this.onChangeAge}
               />
             </div>
+
             <div className="form-group">
               <label>Summary: </label>
               <input
-                type="email"
+                type="text"
                 placeholder="Happy Or Not Happy"
                 required
                 className="form-control"
                 style={{ width: "300px" }}
-                value={this.state.email}
-                onChange={this.onChangeEmail}
+                value={this.state.summary}
+                onChange={this.onChangeSummary}
               />
             </div>
             <div className="form-group">
@@ -214,8 +157,8 @@ export default class ContactComponent extends Component {
                 required
                 className="form-control"
                 style={{ width: "850px", height: "150px" }}
-                value={this.state.country}
-                onChange={this.onChangeCountry}
+                value={this.state.description}
+                onChange={this.onChangeDescription}
               />
             </div>
             <br />
